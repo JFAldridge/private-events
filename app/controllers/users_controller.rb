@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(user_params)
+    @user = User.create(user_params)
+    if @user
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   def show
