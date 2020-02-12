@@ -1457,7 +1457,7 @@ body {
     padding: 12px 15px;
   }
   
-  .contact .php-email-form button[type="submit"] {
+  .sub-but {
     background: #68A4C4;
     border: 0;
     padding: 10px 24px;
@@ -1465,7 +1465,7 @@ body {
     transition: 0.4s;
   }
   
-  .contact .php-email-form button[type="submit"]:hover {
+  .sub-but:hover {
     background: #8dbad2;
   }
   
@@ -1478,6 +1478,8 @@ body {
     }
   }
   
+  
+
   @keyframes animate-loading {
     0% {
       transform: rotate(0deg);
