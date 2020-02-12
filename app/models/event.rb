@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Event < ApplicationRecord
   # == Constants ============================================================
 
   # == Attributes ===========================================================
@@ -6,9 +6,9 @@ class User < ApplicationRecord
   # == Extensions ===========================================================
 
   # == Relationships ========================================================
-  has_many :events, foreign_key: 'creator_id', inverse_of: 'creator'
+  belongs_to :creator, class_name: 'User'
   # == Validations ==========================================================
-  has_secure_password
+
   # == Scopes ===============================================================
 
   # == Callbacks ============================================================
