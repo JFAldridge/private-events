@@ -1,4 +1,4 @@
-<% provide(:title, "Profile") %>
+<% provide(:title, "Event") %>
 
 <main id="main">
 
@@ -11,7 +11,7 @@
 
           <ol>
             <li><%= link_to "Home", root_path %></li>
-            <li>Blog</li>
+            <li>Event</li>
           </ol>
         </div>
 
@@ -27,12 +27,13 @@
         <div class="col-lg-4">
             <div class="sidebar">
 
-              <h3 class="sidebar-title"><%= @user.username%></h3>
+              <h3 class="sidebar-title">Attendees</h3>
               
               <div class="sidebar-item categories">
-              <h4 class="sidebar-title">Events</h4>
               <ul>
-              
+                <% @event.attendees.each do |attendee| %>
+                  <li><%= link_to "#{attendee.username}", attendee%></li>
+                <% end %>
               </ul>
 
               </div><!-- End sidebar categories-->
@@ -40,24 +41,9 @@
             </div><!-- End sidebar -->
 
           </div><!-- End blog sidebar -->
-
           <div class="col-lg-8 entries">
-            <h1>Upcoming Events</h1>
-            <% if @upcoming_events.any? %>
-              <%= render partial: "events/event", collection: @upcoming_events, locals: { event: @upcoming_event } %>
-            <% end %>
-
-            <hr>
-
-            <h1>Past Events</h1>
-            <% if @past_events.any? %>
-              <%= render partial: "events/event", collection: @past_events, locals: { event: @past_event } %>
-            <% end %>
-
-            <div class="blog-pagination">
-              <ul class="justify-content-center">
-              </ul>
-            </div>
+      
+            <%= render @event %>
 
           </div><!-- End blog entries list -->
 

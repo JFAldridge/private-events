@@ -7,7 +7,11 @@
         <div class="carousel-container">
           <h2 class="animated fadeInDown">Across The Board</h2>
           <p class="animated fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <%= link_to 'Sign Up', signup_path, class: "btn-get-started animated fadeInUp" %>
+          <% if logged_in? %>
+            <%= link_to 'Profile', current_user, class: "btn-get-started animated fadeInUp" %>
+          <% else %>
+            <%= link_to 'Sign Up', signup_path, class: "btn-get-started animated fadeInUp" %>
+          <% end %>
         </div>
       </div>
 

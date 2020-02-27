@@ -1,0 +1,89 @@
+<% provide(:title, "Create event") %>
+<main id="main">
+
+    <!-- ======= Breadcrumb Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Sign Up</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Create Event</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Breadcrumb Section -->
+
+    <!-- ======= Form Section ======= -->
+    <section class="contact aos-init aos-animate" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-3">
+
+          </div>
+
+          <div class="col-lg-6">
+            <%= form_for @event, url: events_path do |form| %>
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <%= form.text_field :title, class: "form-control", placeholder: "Party Title" %>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <%= form.text_field :game, class: "form-control", placeholder: "Game" %>
+                </div>
+              </div>
+
+              
+
+              <div class="row">
+                <div class='col-md-6'>
+                  <div class='form-group'>
+                    <%= form.label :start_time, 'Start Date and Time', class: 'control-label' %><br>
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                      <%= form.text_field(:start_time, 
+                        value: form.object.start_time ? form.object.start_time.strftime('%B %d, %Y %I:%M %p') : nil, 
+                        class: "form-control datetimepicker-input", data: {target:"#datetimepicker1"}) %>
+                      <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fas fa-calendar-plus"></i></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class='col-md-6'>
+                  <div class='form-group'>
+                    <%= form.label :end_time, 'End Date and Time', class: 'control-label' %><br>
+                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                      <%= form.text_field(:end_time, 
+                        value: form.object.end_time ? form.object.end_time.strftime('%B %d, %Y %I:%M %p') : nil, 
+                        class: "form-control datetimepicker-input", data: {target:"#datetimepicker2"}) %>
+                      <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fas fa-calendar-plus"></i></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+              <div class="form-group">
+                  <%= form.text_area :description, class: "form-control", size: "24x6", placeholder: "Describe your meetup"%>
+              </div>  
+              <div class="text-center "><%= form.button "Sign up", class: "sub-but" %></div>
+            <% end %>
+
+            
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Form Section -->
+
+  </main><!-- End #main -->
+

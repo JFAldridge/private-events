@@ -1,0 +1,26 @@
+<article class="entry">
+
+  <h2 class="entry-title">
+    <%= event.title %>
+  </h2>
+
+  <div class="entry-meta">
+    <ul>
+      <li class="d-flex align-items-center"><i class="icofont-user"></i> <%= event.creator.username %></li>
+      <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i><%= event.start_time %></li>
+      <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12
+          Comments</a></li>
+    </ul>
+  </div>
+
+  <div class="entry-content">
+    <%= event.description %>
+  </div>
+  
+  <% unless @singular %>
+  <div class="read-more">
+    <%= link_to "Go to Event", event %>
+  </div>
+  <% end %>
+
+</article>

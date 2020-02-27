@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Invitation < ApplicationRecord
   # == Constants ============================================================
 
   # == Attributes ===========================================================
@@ -6,17 +6,15 @@ class User < ApplicationRecord
   # == Extensions ===========================================================
 
   # == Relationships ========================================================
-  has_many :events, foreign_key: 'creator_id', inverse_of: 'creator'
-  has_many :invitations, foreign_key: 'attendee_id'
-  has_many :attended_events, through: :invitations
+  belongs_to :attendee, class_name: 'User'
+  belongs_to :attended_event, class_name: 'Event'
   # == Validations ==========================================================
-  has_secure_password
+
   # == Scopes ===============================================================
-  
+
   # == Callbacks ============================================================
 
   # == Class Methods ========================================================
 
   # == Instance Methods =====================================================
-
 end

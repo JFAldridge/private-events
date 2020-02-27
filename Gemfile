@@ -17,8 +17,14 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # Use Bootstrap 4
 gem 'bootstrap', '~> 4.4.1'
+# Moment.js rails for datetime picker
+gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
+# Rails integration for Tempus Dominus Bootstrap 4 datetime picker
+gem 'bootstrap4-datetime-picker-rails', '~> 0.3.1'
 # Use jquery for Bootstrap 4
 gem 'jquery-rails'
+# Use will_paginate
+gem 'will_paginate', '~> 3.1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -40,10 +46,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
+
+#Add faker gem
+gem 'faker', '~> 1.6', '>= 1.6.3'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
