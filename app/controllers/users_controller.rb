@@ -14,9 +14,21 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @events = nil
+    query = params[:query]
+    params.each do |key,value|
+      Rails.logger.warn "Param #{key}: #{value}"
+    end
+
+    if query == "upcoming"
+      @events = @user.events.upcoming.soonest_first.paginate(page: params[:page], per_page: 5)
+    elsif query == "past"
+      @events = @user.events.past.most_recent_first.paginate(page: params[:page], per_page: 5)
+    else
+      @events = @user.events.all.most_recent_first.paginate(page: params[:page], per_page: 5)
+    end
+
     #@events = @user.attended_events.paginate(page: params[:page], per_page: 10)
-    @upcoming_events = @user.events.upcoming.soonest_first
-    @past_events = @user.events.past.most_recent_first
   end
 
   private

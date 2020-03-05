@@ -2,69 +2,65 @@
 
 <main id="main">
 
-    <!-- ======= Blog Section ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
+  <!-- ======= Blog Section ======= -->
+  <section class="breadcrumbs">
+    <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Blog</h2>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Blog</h2>
 
-          <ol>
-            <li><%= link_to "Home", root_path %></li>
-            <li>Blog</li>
-          </ol>
-        </div>
-
+        <ol>
+          <li><%= link_to "Home", root_path %></li>
+          <li>Blog</li>
+        </ol>
       </div>
-    </section><!-- End Blog Section -->
 
-    <!-- ======= Blog Section ======= -->
-    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-      <div class="container">
+    </div>
+  </section><!-- End Blog Section -->
 
-        <div class="row">
+  <!-- ======= Blog Section ======= -->
+  <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <div class="container">
 
-        <div class="col-lg-4">
-            <div class="sidebar">
+      <div class="row">
 
-              <h3 class="sidebar-title"><%= @user.username%></h3>
-              
-              <div class="sidebar-item categories">
-              <h4 class="sidebar-title">Events</h4>
-              <ul>
-              
-              </ul>
+      <div class="col-lg-4">
+        <div class="sidebar">
 
-              </div><!-- End sidebar categories-->
+          <h3 class="sidebar-title"><%= @user.username%></h3>
+          
+          <div class="sidebar-item categories">
+          <h4 class="sidebar-title">Events</h4>
+          <ul>
+          <li><%= link_to "Upcoming events", user_path(@user, query: "upcoming") %></li>
+          <li><%= link_to "Past events", user_path(@user, query: "past") %></li>
+          <!-- <li><a href="#">General <span>(25)</span></a></li> -->
+          </ul>
 
-            </div><!-- End sidebar -->
+          </div><!-- End sidebar categories-->
 
-          </div><!-- End blog sidebar -->
+        </div><!-- End sidebar -->
 
-          <div class="col-lg-8 entries">
-            <h1>Upcoming Events</h1>
-            <% if @upcoming_events.any? %>
-              <%= render partial: "events/event", collection: @upcoming_events, locals: { event: @upcoming_event } %>
-            <% end %>
+        </div><!-- End blog sidebar -->
 
-            <hr>
+        <div class="col-lg-8 entries" id="entries">
 
-            <h1>Past Events</h1>
-            <% if @past_events.any? %>
-              <%= render partial: "events/event", collection: @past_events, locals: { event: @past_event } %>
-            <% end %>
+          <% if @events.any? %>
+            <%= render @events %>
+          <% end %>
 
-            <div class="blog-pagination">
-              <ul class="justify-content-center">
-              </ul>
-            </div>
+          <div class="blog-pagination">
+            <ul class="justify-content-center">
+              <%= will_paginate @events %>
+            </ul>
+          </div>
 
-          </div><!-- End blog entries list -->
+        </div><!-- End blog entries list -->
 
-        </div><!-- End .row -->
+      </div><!-- End .row -->
 
-      </div><!-- End .container -->
+    </div><!-- End .container -->
 
-    </section><!-- End Blog Section -->
+  </section><!-- End Blog Section -->
 
   </main><!-- End #main -->
